@@ -1,0 +1,48 @@
+{
+  "name": "@supavitebridgeexpress-drizzle/api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server:dev": "ts-node-dev --project tsconfig.json index.ts",
+    "server:build": "tsc --project tsconfig.json",
+    "start": "node index.ts",
+    "server": "nodemon index.ts",
+    "with-env": "dotenv -e ../../.env --"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.40.0",
+    "@supavitebridgeexpress-drizzle/db": "workspace:^",
+    "@supavitebridgeexpress-drizzle/eslint-config": "workspace:^",
+    "@supavitebridgeexpress-drizzle/supabase-client": "workspace:^",
+    "axios": "^1.6.8",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.1",
+    "jsonwebtoken": "^9.0.2",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.7",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.30",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.45.0",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.2.2"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@supavitebridgeexpress-drizzle/eslint-config/base"
+    ]
+  }
+}

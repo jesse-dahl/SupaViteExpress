@@ -1,0 +1,18 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "module": "commonjs",
+    "noEmit": false,
+    "paths": { "@api/*": ["../packages/api/src/*"], }
+  },
+  "include": [
+    "/*.ts",
+    "./src/*.ts",
+    "typings/*.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.cjs",
+    "**/*.mjs",
+  ],
+}
