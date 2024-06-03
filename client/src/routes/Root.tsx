@@ -3,7 +3,7 @@ import React from 'react'
 const Root = () => {
 
   return (
-    <>Hi</>
+    <div className="text-gray-900">Hi</div>
   )
 }
 
