@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "dotenv -- concurrently \"cd ./packages/api && pnpm run server\" \"cd ./client && pnpm run dev\"",
+    "test:e2e": "cd ./packages/testing && pnpm run test:e2e",
+    "test:e2e-ui": "cd ./packages/testing && pnpm run test:e2e-ui",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "with-env": "dotenv -e ./.env --"

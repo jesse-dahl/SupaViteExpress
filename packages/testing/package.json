@@ -1,9 +1,11 @@
 {
-  "name": "testing",
+  "name": "@supaviteexpress/testing",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test:e2e": "playwright test",
+    "test:e2e-ui": "playwright test --ui"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

@@ -3,7 +3,7 @@ import React from 'react'
 const Root = () => {
 
   return (
-    <div className="text-gray-900">Hi</div>
+    <div id='root-div' className="text-gray-900">Hi</div>
   )
 }
 
