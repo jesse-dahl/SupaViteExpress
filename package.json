@@ -1,5 +1,5 @@
 {
-  "name": "supavitebridgeexpress-drizzle",
+  "name": "supaviteexpress",
   "private": true,
   "version": "0.0.1",
   "type": "module",
@@ -10,7 +10,7 @@
     "with-env": "dotenv -e ./.env --"
   },
   "dependencies": {
-    "@supavitebridgeexpress-drizzle/eslint-config": "workspace:^",
+    "@supaviteexpress/eslint-config": "workspace:^",
     "concurrently": "^8.2.2",
     "dotenv": "^16.4.5",
     "eslint-config-airbnb-typescript": "^18.0.0",

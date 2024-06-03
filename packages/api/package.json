@@ -1,5 +1,5 @@
 {
-  "name": "@supavitebridgeexpress-drizzle/api",
+  "name": "@supaviteexpress/api",
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
@@ -16,9 +16,9 @@
   "license": "ISC",
   "dependencies": {
     "@supabase/supabase-js": "^2.40.0",
-    "@supavitebridgeexpress-drizzle/db": "workspace:^",
-    "@supavitebridgeexpress-drizzle/eslint-config": "workspace:^",
-    "@supavitebridgeexpress-drizzle/supabase-client": "workspace:^",
+    "@supaviteexpress/db": "workspace:^",
+    "@supaviteexpress/eslint-config": "workspace:^",
+    "@supaviteexpress/supabase-client": "workspace:^",
     "axios": "^1.6.8",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
@@ -42,7 +42,7 @@
   "eslintConfig": {
     "root": true,
     "extends": [
-      "@supavitebridgeexpress-drizzle/eslint-config/base"
+      "@supaviteexpress/eslint-config/base"
     ]
   }
 }

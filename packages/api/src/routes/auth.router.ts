@@ -1,5 +1,5 @@
 import express, { type Request, type Response, type Router } from "express"
-import { createServerClient } from "@supavitebridgeexpress-drizzle/supabase-client"
+import { createServerClient } from "@supaviteexpress/supabase-client"
 import { AuthError } from "@supabase/supabase-js"
 
 const authRouter: Router = express.Router()
