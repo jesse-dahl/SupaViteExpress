@@ -12,7 +12,10 @@
   "license": "ISC",
   "dependencies": {
     "@supaviteexpress/eslint-config": "workspace:^",
-    "dotenv": "^16.4.5"
+    "@supaviteexpress/client": "workspace:^",
+    "dotenv": "^16.4.5",
+    "react": "19.0.0-rc.0",
+    "react-dom": "19.0.0-rc.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.44.1",
