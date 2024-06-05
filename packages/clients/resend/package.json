@@ -1,0 +1,27 @@
+{
+  "name": "@supaviteexpress/resend-client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@supaviteexpress/eslint-config": "workspace:^",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.1",
+    "resend": "^3.2.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@supaviteexpress/eslint-config/base"
+    ]
+  }
+}
