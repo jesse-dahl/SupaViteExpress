@@ -1,6 +1,6 @@
 import express, { type Request, type Response, type Router } from "express"
-// import { createServerClient } from "@supaviteexpress/supabase-client"
-// import { AuthError } from "@supabase/supabase-js"
+import { User } from "@supaviteexpress/db/types"
+import { sendAuthCookies } from "../../utils/authTokens"
 import passport from "passport"
 require('dotenv').config({ path: "../../../.env" })
 
@@ -25,7 +25,8 @@ authRouter.get(
     session: true,
   }), 
   // middleware for user add or create 
-  function(_req, res) { 
+  function(req, res) { 
+    sendAuthCookies(res, req.user as User);
     res.redirect(`${process.env.CLIENT_URL}`);
   } 
 );

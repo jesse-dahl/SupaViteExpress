@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { pgTable, text, varchar, uuid } from "drizzle-orm/pg-core";
+import { pgTable, text, varchar, uuid, integer } from "drizzle-orm/pg-core";
 // import { sql } from "drizzle-orm";
  
 export const users = pgTable('users', {
@@ -10,4 +10,5 @@ export const users = pgTable('users', {
   googleId: text('google_id'),
   fullName: text('full_name'),
   phone: varchar('phone', { length: 256 }),
+  refreshTokenVersion: integer("refresh_token_version").default(1).notNull(),
 });

@@ -6,7 +6,6 @@ import cors from "cors"
 // import customCors from "../utils/cors"
 import userRouter from "./routes/user.router"
 import authRouter from "./routes/auth.router"
-import db from "@supaviteexpress/db";
 import { User } from "@supaviteexpress/db/types";
 import { getUser } from "@supaviteexpress/db/queries/users";
 import { insertUser } from "@supaviteexpress/db/mutations/users";
@@ -48,7 +47,7 @@ function initAuth() {
 
         // 3. create user if not exists
         if (!user) {
-          user = await insertUser({
+          [user] = await insertUser({
             googleId: userData?.id,
           })
         }

@@ -1,24 +1,27 @@
-import { Request, Response, NextFunction } from 'express';
-import jwt, { JwtPayload } from 'jsonwebtoken';
+import { User } from "@supaviteexpress/db";
+import { checkTokens } from "../utils/authTokens";
+import { Request as ExpressRequest, Response, NextFunction } from "express";
 
-export const auth = async (req: Request, res: Response, next: NextFunction) => {
-  try {
-    //const token = req.header('Authorization')?.replace('Bearer ', '');
-    const token = req.header('Authorization')?.split(' ')[1];
+export interface AuthenticatedRequest extends ExpressRequest {
+  userId: string;
+  user: User; // Replace 'any' with the actual user type
+}
 
-    const supabaseSecret: string = `${process.env.SUPABASE_JWT_SECRET}`;
+// Middleware for validating JWT tokens
+export const authenticateJWT = async (req: ExpressRequest, res: Response, next: NextFunction) => {
+  const { id, rid } = req.cookies
+  if (!id || !rid) return res.status(401).json({ message: 'Unauthorized' });
 
-    if (token) {
-      //throw new Error();
-      //const checkJwt = jwt.decode(token, { complete: true, json: true });
-
-      jwt.verify(token, supabaseSecret) as JwtPayload;
-    } else {
-      res.status(401).json({ msg: 'No token, auth denied!' });
-    }
-
-    next();
-  } catch (err) {
-    return res.status(400).json({ error: 'Invalid token, auth denied!' });
-  }
+  const { userId, user } = await checkTokens(id, rid);
+  if (!userId || !user) return res.status(401).json({ message: 'Unauthorized' });
+  req.user = user;
+  next();
 };
+
+// implement at some point
+// export const checkAdmin = (req: Request, res: Response, next: NextFunction) => {
+//   if (req.user && req.user.role === 'admin') {
+//     return next();
+//   }
+//   res.status(403).json({ message: 'Admin access required' });
+// };
