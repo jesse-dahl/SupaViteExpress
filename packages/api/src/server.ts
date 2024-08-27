@@ -1,9 +1,15 @@
 import express, { type Express, type Request, type Response } from "express"
+import passport from "passport";
+import { OAuth2Strategy } from "passport-google-oauth"
 import cookieParser from "cookie-parser"
 import cors from "cors"
 // import customCors from "../utils/cors"
 import userRouter from "./routes/user.router"
 import authRouter from "./routes/auth.router"
+import db from "@supaviteexpress/db";
+import { User } from "@supaviteexpress/db/types";
+import { getUser } from "@supaviteexpress/db/queries/users";
+import { insertUser } from "@supaviteexpress/db/mutations/users";
 require('dotenv').config({ path: "../../../.env" })
 
 
@@ -16,6 +22,51 @@ export function initApp() {
   startAppServer()
 }
 
+function initAuth() {
+  app.use(passport.initialize() as any);
+
+  const clientID = process.env.GOOGLE_CLIENT_ID;
+  const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
+  const callbackURL = `${process.env.API_URL}/auth/google/redirect`;
+
+  if (!clientID || !clientSecret) {
+    throw new Error("Google OAuth client ID and secret must be defined");
+  }
+
+  passport.use(
+    new OAuth2Strategy(
+      {
+        clientID,
+        clientSecret,
+        callbackURL,
+      },
+      async function (_accessToken, _refreshToken, profile, done) {
+        // User find or create to db
+        const userData = profile._json;
+        // 2. db lookup
+        let user = await getUser(userData?.id)
+
+        // 3. create user if not exists
+        if (!user) {
+          user = await insertUser({
+            googleId: userData?.id,
+          })
+        }
+
+        return done(null, profile);
+      }
+    )
+  );
+
+  passport.serializeUser((user, done) => { 
+    done(null, user); 
+  }); 
+  
+  passport.deserializeUser((user: User, done) => { 
+    done(null, user);
+  }); 
+}
+
 function initAppMiddleware() {
   console.log("MIDDLEWARE INIT")
   app.use(cors({
@@ -26,6 +77,7 @@ function initAppMiddleware() {
     res.setHeader("Content-Type", "application/json");
     next();
   });
+  initAuth();
   app.use(express.urlencoded({ extended: false }))
   app.use(express.json())
   app.use(cookieParser())
