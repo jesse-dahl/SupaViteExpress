@@ -1,5 +1,6 @@
 import { createServerClient as createSSRClient } from "@supabase/ssr"
 import { createClient } from "@supabase/supabase-js"
+import { logger } from "@sve/logger"
 import { type Request, type Response } from "express"
 
 const SUPABASE_URL = process.env.SUPABASE_URL ?? ""
@@ -12,8 +13,7 @@ export const createServerClient = (context: { req: Request; res: Response }) => 
       get: (key) => {
         const cookies = context.req.cookies
         const cookie = cookies?.[key] ?? ''
-        console.log({cookies})
-        // console.log({key})
+        logger.debug('COOKIES OBJECT: ', cookies, '/packages/clients/supabase', 'index.ts')
         return decodeURIComponent(cookie)
       },
       set: (key, value, options) => {

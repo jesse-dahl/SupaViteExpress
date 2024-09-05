@@ -27,30 +27,30 @@ class ConsoleLogger {
     await axiomClient.flush();
   }
 
-  debug(message: string, logLocation: string | undefined = undefined, data: unknown = undefined): void {
-    this.logMessage(LogLevel.DEBUG, message, logLocation, data);
+  debug(message: string, data: unknown = undefined, trace: string | undefined = undefined, file: string| undefined = undefined): void {
+    this.logMessage(LogLevel.DEBUG, message, trace, file, data);
   }
 
-  info(message: string, logLocation: string | undefined = undefined, data: unknown = undefined): void {
-    this.logMessage(LogLevel.INFO, message, logLocation, data);
+  info(message: string, data: unknown = undefined, trace: string | undefined = undefined, file: string | undefined = undefined): void {
+    this.logMessage(LogLevel.INFO, message, trace, file, data);
   }
 
-  warn(message: string, logLocation: string | undefined = undefined, data: unknown = undefined): void {
-    this.logMessage(LogLevel.WARN, message, logLocation, data);
+  warn(message: string, data: unknown = undefined, trace: string | undefined = undefined, file: string | undefined = undefined): void {
+    this.logMessage(LogLevel.WARN, message, trace, file, data);
   }
 
-  error(message: string, logLocation: string | undefined = undefined, data: unknown = undefined): void {
-    this.logMessage(LogLevel.ERROR, message, logLocation, data);
+  error(message: string, data: unknown = undefined, trace: string | undefined = undefined, file: string | undefined = undefined): void {
+    this.logMessage(LogLevel.ERROR, message, trace, file, data);
   }
 
-  event(message: string, logLocation: string | undefined = undefined, data: unknown = undefined): void {
-    this.logMessage(LogLevel.EVENT, message, logLocation, data);
+  event(message: string, data: unknown = undefined, trace: string | undefined = undefined, file: string | undefined = undefined): void {
+    this.logMessage(LogLevel.EVENT, message, trace, file, data);
   }
 
-  private logMessage(level: LogLevel, message: string, logLocation: string | undefined = undefined, data: unknown = undefined): void {
+  private logMessage(level: LogLevel, message: string, trace: string | undefined, file: string | undefined = undefined, data: unknown = undefined): void {
     if (this.isLogLevelEnabled(level)) {
       const timestamp = new Date().toISOString();
-      const ingestString = `[${timestamp}] [${level}] - ${message} ${data ? JSON.stringify(data, null, 2) : ''}`;
+      const ingestString = `[${timestamp}] [${level}] - ${message} ${data ? prettyPrint(data) : ''}`;
       console.log(ingestString);
       if (!process.env.NEXT_PUBLIC_AXIOM_DATASET) throw new Error('NEXT_PUBLIC_AXIOM_DATASET not defined within the env file...');
       if (!axiomClient) throw new Error('Axiom client not instantiated');
@@ -59,7 +59,8 @@ class ConsoleLogger {
         platform: platform as object,
         timestamp: `${timestamp}`,
         data,
-        logLocation: logLocation || 'NA',
+        trace: trace || 'NA',
+        logLocation: file || 'NA',
       }]);
     }
   }
@@ -70,3 +71,4 @@ class ConsoleLogger {
 }
 
 export const logger = new ConsoleLogger(envLogLevelOrDebug());
+export const prettyPrint = (ingestObject: object): string => JSON?.stringify(ingestObject, null, 2);

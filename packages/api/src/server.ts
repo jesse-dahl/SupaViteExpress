@@ -9,6 +9,7 @@ import authRouter from "./routes/auth.router"
 import { User } from "@sve/db/types";
 import { getUser } from "@sve/db/queries/users";
 import { insertUser } from "@sve/db/mutations/users";
+import { logger } from "@sve/logger";
 require('dotenv').config({ path: "../../../.env" })
 
 
@@ -67,33 +68,33 @@ function initAuth() {
 }
 
 function initAppMiddleware() {
-  console.log("MIDDLEWARE INIT")
+  logger.debug("MIDDLEWARE INIT");
   app.use(cors({
     credentials: true,
     allowedHeaders: 'Content-Type,X-Requested-With,Authorization'
-  }))
+  }));
   app.use(function(_req, res, next) {
     res.setHeader("Content-Type", "application/json");
     next();
   });
   initAuth();
-  app.use(express.urlencoded({ extended: false }))
-  app.use(express.json())
-  app.use(cookieParser())
+  app.use(express.urlencoded({ extended: false }));
+  app.use(express.json());
+  app.use(cookieParser());
 }
 
 function initAppRouters() {
-  console.log("APP ROUTER INIT")
+  logger.debug("APP ROUTER INIT");
   app.get("/", (_req: Request, res: Response) => {
     res.status(200).send({ data: "Express server is ripping and good to go!" })
-  })
+  });
 
-  app.use("/auth", authRouter)
-  app.use("/user", userRouter)
+  app.use("/auth", authRouter);
+  app.use("/user", userRouter);
 }
 
 function startAppServer() {
-  app.listen(PORT, () => console.log(`Server listening on port : ${PORT}`));
+  app.listen(PORT, () => logger.debug(`Server listening on port : ${PORT}`));
 }
 
 
