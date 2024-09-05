@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@sve/eslint-config": "workspace:^",
+    "@sve/logger": "workspace:^",
     "concurrently": "^8.2.2",
     "dotenv": "^16.4.5",
     "eslint-config-airbnb-typescript": "^18.0.0",

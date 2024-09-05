@@ -11,6 +11,9 @@ importers:
       '@sve/eslint-config':
         specifier: workspace:^
         version: link:packages/shared/config/eslint
+      '@sve/logger':
+        specifier: workspace:^
+        version: link:packages/services/logger
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
