@@ -4,7 +4,7 @@ import { Request as ExpressRequest, Response, NextFunction } from "express";
 
 export interface AuthenticatedRequest extends ExpressRequest {
   userId: string;
-  user: User; // Replace 'any' with the actual user type
+  user: User;
 }
 
 // Middleware for validating JWT tokens
