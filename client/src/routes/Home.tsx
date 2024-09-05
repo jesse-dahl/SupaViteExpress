@@ -1,7 +1,7 @@
 import React from 'react'
 import reactLogo from '../assets/react.svg'
 import viteLogo from '/vite.svg'
-import { supabaseClient } from '@supaviteexpress/supabase-client'
+import { supabaseClient } from '@sve/supabase-client'
 
 const Home: React.FC = () => {
   const [count, setCount] = React.useState(0)

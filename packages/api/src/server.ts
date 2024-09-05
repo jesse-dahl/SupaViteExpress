@@ -6,9 +6,9 @@ import cors from "cors"
 // import customCors from "../utils/cors"
 import userRouter from "./routes/user.router"
 import authRouter from "./routes/auth.router"
-import { User } from "@supaviteexpress/db/types";
-import { getUser } from "@supaviteexpress/db/queries/users";
-import { insertUser } from "@supaviteexpress/db/mutations/users";
+import { User } from "@sve/db/types";
+import { getUser } from "@sve/db/queries/users";
+import { insertUser } from "@sve/db/mutations/users";
 require('dotenv').config({ path: "../../../.env" })
 
 

@@ -1,4 +1,4 @@
-import { User } from "@supaviteexpress/db";
+import { User } from "@sve/db";
 import { checkTokens } from "../utils/authTokens";
 import { Request as ExpressRequest, Response, NextFunction } from "express";
 

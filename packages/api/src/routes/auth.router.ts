@@ -1,5 +1,5 @@
 import express, { type Request, type Response, type Router } from "express"
-import { User } from "@supaviteexpress/db/types"
+import { User } from "@sve/db/types"
 import { sendAuthCookies } from "../../utils/authTokens"
 import passport from "passport"
 require('dotenv').config({ path: "../../../.env" })

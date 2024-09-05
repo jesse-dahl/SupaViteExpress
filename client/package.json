@@ -1,5 +1,5 @@
 {
-  "name": "@supaviteexpress/client",
+  "name": "@sve/client",
   "private": true,
   "version": "1.0.0",
   "description": "",
@@ -14,10 +14,10 @@
   "license": "ISC",
   "dependencies": {
     "@supabase/supabase-js": "^2.40.0",
-    "@supaviteexpress/api": "workspace:^1.0.0",
-    "@supaviteexpress/eslint-config": "workspace:^",
-    "@supaviteexpress/supabase-client": "workspace:^",
-    "@supaviteexpress/types": "workspace:^",
+    "@sve/api": "workspace:^1.0.0",
+    "@sve/eslint-config": "workspace:^",
+    "@sve/supabase-client": "workspace:^",
+    "@sve/types": "workspace:^",
     "@tailwindcss/forms": "^0.5.7",
     "@tanstack/react-query": "^5.28.6",
     "@types/react-router-dom": "^5.3.3",
@@ -47,8 +47,8 @@
   "eslintConfig": {
     "root": true,
     "extends": [
-      "@supaviteexpress/eslint-config/base",
-      "@supaviteexpress/eslint-config/react"
+      "@sve/eslint-config/base",
+      "@sve/eslint-config/react"
     ]
   }
 }

@@ -1,6 +1,6 @@
 import * as jwt from "jsonwebtoken"
-import { User } from "@supaviteexpress/db/types"
-import { getUser } from "@supaviteexpress/db/queries/users"
+import { User } from "@sve/db/types"
+import { getUser } from "@sve/db/queries/users"
 import { Response } from "express";
 require('dotenv').config({ path: "../../../.env" })
 

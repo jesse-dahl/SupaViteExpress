@@ -1,5 +1,5 @@
 {
-  "name": "@supaviteexpress/testing",
+  "name": "@sve/testing",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -11,8 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@supaviteexpress/eslint-config": "workspace:^",
-    "@supaviteexpress/client": "workspace:^",
+    "@sve/eslint-config": "workspace:^",
+    "@sve/client": "workspace:^",
     "dotenv": "^16.4.5",
     "react": "19.0.0-rc.0",
     "react-dom": "19.0.0-rc.0"
@@ -29,7 +29,7 @@
   "eslintConfig": {
     "root": true,
     "extends": [
-      "@supaviteexpress/eslint-config/base"
+      "@sve/eslint-config/base"
     ]
   }
 }

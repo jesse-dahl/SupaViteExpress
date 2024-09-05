@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { describe, it, expect } from 'vitest'
-import Root from '@supaviteexpress/client/src/routes/Root';
+import Root from '@sve/client/src/routes/Root';
 
 describe('Root', () => {
   it('renders the Root component', () => {

@@ -1,8 +1,8 @@
-import { User } from "@supaviteexpress/db/types"
+import { User } from "@sve/db/types"
 import express, { NextFunction, type Request, type Response, type Router } from "express"
 import { authenticateJWT } from "../../middleware/auth"
 import { checkTokens } from "../../utils/authTokens"
-import { getUser } from "@supaviteexpress/db/queries/users"
+import { getUser } from "@sve/db/queries/users"
 
 const userRouter: Router = express.Router()
 

@@ -1,5 +1,5 @@
 import React from "react"
-import { supabaseClient } from "@supaviteexpress/supabase-client";
+import { supabaseClient } from "@sve/supabase-client";
 import { type User, type Session, type AuthTokenResponsePassword, AuthError, AuthResponse } from "@supabase/supabase-js";
 
 type ContextProps = {

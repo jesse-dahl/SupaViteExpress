@@ -8,7 +8,7 @@ importers:
 
   .:
     dependencies:
-      '@supaviteexpress/eslint-config':
+      '@sve/eslint-config':
         specifier: workspace:^
         version: link:packages/shared/config/eslint
       concurrently:
@@ -63,16 +63,16 @@ importers:
       '@supabase/supabase-js':
         specifier: ^2.40.0
         version: 2.43.4
-      '@supaviteexpress/api':
+      '@sve/api':
         specifier: workspace:^1.0.0
         version: link:../packages/api
-      '@supaviteexpress/eslint-config':
+      '@sve/eslint-config':
         specifier: workspace:^
         version: link:../packages/shared/config/eslint
-      '@supaviteexpress/supabase-client':
+      '@sve/supabase-client':
         specifier: workspace:^
         version: link:../packages/clients/supabase
-      '@supaviteexpress/types':
+      '@sve/types':
         specifier: workspace:^
         version: link:../packages/shared/types
       '@tailwindcss/forms':
@@ -151,13 +151,13 @@ importers:
       '@supabase/supabase-js':
         specifier: ^2.40.0
         version: 2.43.4
-      '@supaviteexpress/db':
+      '@sve/db':
         specifier: workspace:^
         version: link:../db
-      '@supaviteexpress/eslint-config':
+      '@sve/eslint-config':
         specifier: workspace:^
         version: link:../shared/config/eslint
-      '@supaviteexpress/supabase-client':
+      '@sve/supabase-client':
         specifier: workspace:^
         version: link:../clients/supabase
       axios:
@@ -228,9 +228,25 @@ importers:
         specifier: ^5.2.2
         version: 5.4.5
 
+  packages/clients/axiom:
+    dependencies:
+      '@axiomhq/js':
+        specifier: ^1.1.1
+        version: 1.1.1
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.5
+    devDependencies:
+      '@sve/eslint-config':
+        specifier: workspace:^
+        version: link:../../shared/config/eslint
+      eslint:
+        specifier: ^8.45.0
+        version: 8.57.0
+
   packages/clients/resend:
     dependencies:
-      '@supaviteexpress/eslint-config':
+      '@sve/eslint-config':
         specifier: workspace:^
         version: link:../../shared/config/eslint
       dotenv:
@@ -265,7 +281,7 @@ importers:
 
   packages/db:
     dependencies:
-      '@supaviteexpress/eslint-config':
+      '@sve/eslint-config':
         specifier: workspace:^
         version: link:../shared/config/eslint
       dotenv:
@@ -296,6 +312,18 @@ importers:
       typescript:
         specifier: ^5.2.2
         version: 5.4.5
+
+  packages/services/logger:
+    dependencies:
+      '@sve/axiom-client':
+        specifier: workspace:^1.0.0
+        version: link:../../clients/axiom
+      '@sve/eslint-config':
+        specifier: workspace:^
+        version: link:../../shared/config/eslint
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.5
 
   packages/shared/config/eslint:
     dependencies:
@@ -345,10 +373,10 @@ importers:
 
   packages/testing:
     dependencies:
-      '@supaviteexpress/client':
+      '@sve/client':
         specifier: workspace:^
         version: link:../../client
-      '@supaviteexpress/eslint-config':
+      '@sve/eslint-config':
         specifier: workspace:^
         version: link:../shared/config/eslint
       dotenv:
@@ -391,6 +419,10 @@ packages:
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
+
+  '@axiomhq/js@1.1.1':
+    resolution: {integrity: sha512-bFgbf1uP/3g+ZkNKHmgB9PWyEgGWXqZo87jKbJugFRSKRZWQSVLUdpej4RsfGQ9xCjcXixb8NTAqjMzezip+cA==}
+    engines: {node: '>=16'}
 
   '@babel/code-frame@7.24.6':
     resolution: {integrity: sha512-ZJhac6FkEd1yhG2AHOmfcXG4ceoLltoCVJjN5XsWN9BifBQr+cHJbWi0h68HZuSORq+3WtJ2z0hwF2NG1b5kcA==}
@@ -2312,6 +2344,9 @@ packages:
   fastq@1.17.1:
     resolution: {integrity: sha512-sRVD3lWVIXWg6By68ZN7vho9a1pQcN/WBFaAAsDDFzlJjvoGx0P8z7V1t72grFJfJhu3YPZBuu25f7Kaw2jN1w==}
 
+  fetch-retry@6.0.0:
+    resolution: {integrity: sha512-BUFj1aMubgib37I3v4q78fYo63Po7t4HUPTpQ6/QE6yK6cIQrP+W43FYToeTEyg5m2Y7eFUtijUuAv/PDlWuag==}
+
   file-entry-cache@6.0.1:
     resolution: {integrity: sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg==}
     engines: {node: ^10.12.0 || >=12.0.0}
@@ -3923,6 +3958,10 @@ packages:
     resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}
     engines: {node: '>= 0.4.0'}
 
+  uuid@8.3.2:
+    resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+    hasBin: true
+
   v8-compile-cache-lib@3.0.1:
     resolution: {integrity: sha512-wa7YjyUGfNZngI/vtK0UHAN+lgDCxBPCylVXGp0zu59Fz5aiGtNXaq3DhIov063MorB+VfufLh3JlF2KdTK3xg==}
 
@@ -4117,6 +4156,11 @@ snapshots:
   '@adobe/css-tools@4.3.3': {}
 
   '@alloc/quick-lru@5.2.0': {}
+
+  '@axiomhq/js@1.1.1':
+    dependencies:
+      fetch-retry: 6.0.0
+      uuid: 8.3.2
 
   '@babel/code-frame@7.24.6':
     dependencies:
@@ -6139,6 +6183,8 @@ snapshots:
     dependencies:
       reusify: 1.0.4
 
+  fetch-retry@6.0.0: {}
+
   file-entry-cache@6.0.1:
     dependencies:
       flat-cache: 3.2.0
@@ -7774,6 +7820,8 @@ snapshots:
   util-deprecate@1.0.2: {}
 
   utils-merge@1.0.1: {}
+
+  uuid@8.3.2: {}
 
   v8-compile-cache-lib@3.0.1: {}
 

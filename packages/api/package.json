@@ -1,5 +1,5 @@
 {
-  "name": "@supaviteexpress/api",
+  "name": "@sve/api",
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
@@ -16,9 +16,9 @@
   "license": "ISC",
   "dependencies": {
     "@supabase/supabase-js": "^2.40.0",
-    "@supaviteexpress/db": "workspace:^",
-    "@supaviteexpress/eslint-config": "workspace:^",
-    "@supaviteexpress/supabase-client": "workspace:^",
+    "@sve/db": "workspace:^",
+    "@sve/eslint-config": "workspace:^",
+    "@sve/supabase-client": "workspace:^",
     "axios": "^1.6.8",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
@@ -47,7 +47,7 @@
   "eslintConfig": {
     "root": true,
     "extends": [
-      "@supaviteexpress/eslint-config/base"
+      "@sve/eslint-config/base"
     ]
   }
 }
