@@ -10,7 +10,7 @@ const serverEnvSchema = z.object({
   DATABASE_URL: z.string().min(1, 'DATABASE_URL is required'),
   POOLING_DATABASE_URL: z.string().optional(),
   DATABASE_PASSWORD: z.string().optional(),
-  API_SECRET: z.string().min(1, 'API_SECRET is required'),
+  API_SECRET: z.string().optional(),
   SUPABASE_URL: z.string().min(1, 'SUPABASE_URL is required'),
   SUPABASE_ANON_KEY: z.string().min(1, 'SUPABASE_ANON_KEY is required'),
   JWT_SECRET: z.string().min(1, 'JWT_SECRET is required'),

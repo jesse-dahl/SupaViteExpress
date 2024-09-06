@@ -1,5 +1,5 @@
 import pino from "pino";
-import { SERVER_ENV } from "@sve/env";
+// import { SERVER_ENV } from "@sve/env";
 
 enum LogLevel {
   EVENT = 'EVENT',

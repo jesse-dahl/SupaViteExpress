@@ -6,6 +6,10 @@
     "module": "esnext",
     "moduleResolution": "node",
     "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@sve/*": ["packages/*/src"]
+    },
 
     /* Bundler mode */
     "resolveJsonModule": true,
@@ -26,5 +30,9 @@
       "module": "commonjs"
     }
   },
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [
+    { "path": "./tsconfig.node.json" },
+    { "path": "./packages/shared/env" },
+    { "path": "./packages/api" }
+  ]
 }

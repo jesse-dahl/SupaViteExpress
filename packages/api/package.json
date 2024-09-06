@@ -9,7 +9,8 @@
     "server:build": "tsc --project tsconfig.json",
     "start": "node index.ts",
     "server": "nodemon index.ts",
-    "with-env": "dotenv -e ../../.env --"
+    "with-env": "dotenv -e ../../.env --",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",

@@ -1,6 +1,6 @@
 import { axiomClient } from '@sve/axiom-client';
 import platform from 'platform';
-import { SERVER_ENV } from "@sve/env";  ;
+import { SERVER_ENV } from "@sve/env";
 
 enum LogLevel {
   DEBUG = 'DEBUG',

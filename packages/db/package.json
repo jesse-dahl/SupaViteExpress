@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "clean": "rm -rf .turbo node_modules",
+    "build": "tsc",
     "lint": "eslint .",
     "dev": "pnpm with-env drizzle-kit studio --port 5558",
     "db:generate": "drizzle-kit generate:pg",

@@ -3,7 +3,7 @@
   "main": "./index.ts",
   "compilerOptions": {
     "outDir": "dist",
-    "module": "esnext",
+    "module": "commonjs",
     "noEmit": false,
 
   },

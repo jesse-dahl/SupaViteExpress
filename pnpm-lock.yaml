@@ -420,7 +420,11 @@ importers:
         specifier: ^15.0.0
         version: 15.0.0(eslint-plugin-import@2.29.1(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0))(eslint@8.57.0)
 
-  packages/shared/env: {}
+  packages/shared/env:
+    dependencies:
+      '@sve/eslint-config':
+        specifier: workspace:^
+        version: link:../config/eslint
 
   packages/shared/types:
     dependencies:

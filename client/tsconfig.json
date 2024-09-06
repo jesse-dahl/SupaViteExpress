@@ -4,7 +4,7 @@
     "outDir": "dist",
     "module": "commonjs",
     "noEmit": false,
-    "paths": { "@api/*": ["../packages/api/src/*"], }
+    "paths": { "@api/*": ["../packages/api/src/*"], "@sve/env": ["../packages/shared/env/src"] }
   },
   "include": [
     "/*.ts",

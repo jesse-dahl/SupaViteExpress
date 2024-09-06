@@ -5,6 +5,7 @@
     "outDir": "dist",
     "module": "esnext",
     "noEmit": false,
+
   },
   "include": ["index.ts", "/*.ts"],
 }
