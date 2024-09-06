@@ -17,6 +17,7 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.40.0",
     "@sve/db": "workspace:^",
+    "@sve/env": "workspace:^",
     "@sve/eslint-config": "workspace:^",
     "@sve/supabase-client": "workspace:^",
     "axios": "^1.6.8",

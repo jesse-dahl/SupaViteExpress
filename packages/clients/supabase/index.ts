@@ -1,10 +1,11 @@
 import { createServerClient as createSSRClient } from "@supabase/ssr"
+import { SERVER_ENV } from "@sve/env"
 import { createClient } from "@supabase/supabase-js"
 import { logger } from "@sve/logger"
 import { type Request, type Response } from "express"
 
-const SUPABASE_URL = process.env.SUPABASE_URL ?? ""
-const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY ?? ""
+const SUPABASE_URL = SERVER_ENV.SUPABASE_URL ?? ""
+const SUPABASE_ANON_KEY = SERVER_ENV.SUPABASE_ANON_KEY ?? ""
 
 export const createServerClient = (context: { req: Request; res: Response }) => {
 

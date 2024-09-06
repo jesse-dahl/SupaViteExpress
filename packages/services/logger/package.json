@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@sve/axiom-client": "workspace:^1.0.0",
+    "@sve/env": "workspace:^",
     "@sve/eslint-config": "workspace:^",
     "dotenv": "^16.4.5",
     "platform": "^1.3.6"

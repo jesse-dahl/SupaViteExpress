@@ -1,6 +1,6 @@
 import { axiomClient } from '@sve/axiom-client';
 import platform from 'platform';
-require('dotenv').config({ path: "../../../.env" });
+import { SERVER_ENV } from "@sve/env";  ;
 
 enum LogLevel {
   DEBUG = 'DEBUG',
@@ -11,7 +11,7 @@ enum LogLevel {
 }
 
 const envLogLevelOrDebug = (): LogLevel => {
-  const envLogLevel = (process.env.NEXT_PUBLIC_LOG_LEVEL || 'DEBUG').toUpperCase();
+  const envLogLevel = (SERVER_ENV.LOG_LEVEL || 'DEBUG').toUpperCase();
   const filtered = Object.keys(LogLevel).filter((ll) => ll === envLogLevel);
   return (filtered.length > 0 ? filtered[0] : LogLevel.DEBUG) as LogLevel;
 };
@@ -52,9 +52,9 @@ class ConsoleLogger {
       const timestamp = new Date().toISOString();
       const ingestString = `[${timestamp}] [${level}] - ${message} ${data ? prettyPrint(data) : ''}`;
       console.log(ingestString);
-      if (!process.env.NEXT_PUBLIC_AXIOM_DATASET) throw new Error('NEXT_PUBLIC_AXIOM_DATASET not defined within the env file...');
+      if (!SERVER_ENV.AXIOM_DATASET) throw new Error('AXIOM_DATASET not defined within the env file...');
       if (!axiomClient) throw new Error('Axiom client not instantiated');
-      axiomClient.ingest(process.env.NEXT_PUBLIC_AXIOM_DATASET!, [{
+      axiomClient.ingest(SERVER_ENV.AXIOM_DATASET!, [{
         message: ingestString,
         platform: platform as object,
         timestamp: `${timestamp}`,

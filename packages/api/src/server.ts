@@ -2,6 +2,7 @@ import express, { type Express, type Request, type Response } from "express"
 import passport from "passport";
 import { OAuth2Strategy } from "passport-google-oauth"
 import cookieParser from "cookie-parser"
+import { SERVER_ENV } from "@sve/env";
 import cors from "cors"
 // import customCors from "../utils/cors"
 import userRouter from "./routes/user.router"
@@ -10,7 +11,6 @@ import { User } from "@sve/db/types";
 import { getUser } from "@sve/db/queries/users";
 import { insertUser } from "@sve/db/mutations/users";
 import { logger } from "@sve/logger";
-require('dotenv').config({ path: "../../../.env" })
 
 
 const PORT = 5001;
@@ -25,9 +25,9 @@ export function initApp() {
 function initAuth() {
   app.use(passport.initialize() as any);
 
-  const clientID = process.env.GOOGLE_CLIENT_ID;
-  const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
-  const callbackURL = `${process.env.API_URL}/auth/google/redirect`;
+  const clientID = SERVER_ENV.GOOGLE_CLIENT_ID;
+  const clientSecret = SERVER_ENV.GOOGLE_CLIENT_SECRET;
+  const callbackURL = `${SERVER_ENV.API_URL}/auth/google/redirect`;
 
   if (!clientID || !clientSecret) {
     throw new Error("Google OAuth client ID and secret must be defined");

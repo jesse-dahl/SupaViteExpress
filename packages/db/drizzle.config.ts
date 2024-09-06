@@ -1,9 +1,10 @@
 import { logger } from "@sve/logger";
 import type { Config } from "drizzle-kit";
-require('dotenv').config({ path: "../../.env" })
+import { SERVER_ENV } from "@sve/env";
+// require('dotenv').config({ path: "../../.env" })
 
-logger.debug('DATABASE_URL: ', process.env.DATABASE_URL, 'packages/db', 'drizzle.config.ts');
-if (!process.env.DATABASE_URL) {
+logger.debug('DATABASE_URL: ', SERVER_ENV.DATABASE_URL, 'packages/db', 'drizzle.config.ts');
+if (!SERVER_ENV.DATABASE_URL) {
   throw new Error("DATABASE_URL is missing");
 }
 
@@ -12,6 +13,6 @@ export default {
   out: "./drizzle",
   driver: 'pg',
   dbCredentials: {
-    connectionString: process.env.DATABASE_URL!,
+    connectionString: SERVER_ENV.DATABASE_URL!,
   }
 } satisfies Config;

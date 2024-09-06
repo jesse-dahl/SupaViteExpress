@@ -2,7 +2,7 @@ import * as jwt from "jsonwebtoken"
 import { User } from "@sve/db/types"
 import { getUser } from "@sve/db/queries/users"
 import { Response } from "express";
-require('dotenv').config({ path: "../../../.env" })
+import { SERVER_ENV } from "@sve/env";  
 
 export type RefreshTokenData = {
   userId: string;
@@ -13,14 +13,14 @@ export type AccessTokenData = {
   userId: string;
 };
 
-const __prod__ = process.env.NODE_ENV === "production"
+const __prod__ = SERVER_ENV.NODE_ENV === "production"
 
 const createAuthTokens = (
   user: User
 ): { refreshToken: string; accessToken: string } => {
   const refreshToken = jwt.sign(
     { userId: user.id, refreshTokenVersion: user.refreshTokenVersion },
-    process.env.REFRESH_TOKEN_SECRET!,
+    SERVER_ENV.REFRESH_TOKEN_SECRET!,
     {
       expiresIn: "30d",
     }
@@ -28,7 +28,7 @@ const createAuthTokens = (
 
   const accessToken = jwt.sign(
     { userId: user.id },
-    process.env.ACCESS_TOKEN_SECRET!,
+    SERVER_ENV.ACCESS_TOKEN_SECRET!,
     {
       expiresIn: "15min",
     }
@@ -42,7 +42,7 @@ const cookieOpts = {
   secure: __prod__,
   sameSite: "lax",
   path: "/",
-  domain: __prod__ ? `.${process.env.DOMAIN}` : "",
+  domain: __prod__ ? `.${SERVER_ENV.DOMAIN}` : "",
   maxAge: 1000 * 60 * 60 * 24 * 365 * 10, // 10 year
 } as const;
 
@@ -64,7 +64,7 @@ export const checkTokens = async (
   try {
     // verify
     const data = <AccessTokenData>(
-      jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET!)
+      jwt.verify(accessToken, SERVER_ENV.ACCESS_TOKEN_SECRET!)
     );
 
     // get userId from token data
@@ -84,7 +84,7 @@ export const checkTokens = async (
   let data;
   try {
     data = <RefreshTokenData>(
-      jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET!)
+      jwt.verify(refreshToken, SERVER_ENV.REFRESH_TOKEN_SECRET!)
     );
   } catch {
     throw new Error("UNAUTHORIZED");

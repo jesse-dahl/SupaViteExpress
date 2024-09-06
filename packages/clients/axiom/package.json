@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "@sve/eslint-config": "workspace:^",
+    "@sve/env": "workspace:^",
     "eslint": "^8.45.0"
   },
   "eslintConfig": {

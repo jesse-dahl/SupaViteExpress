@@ -1,8 +1,8 @@
 import express, { type Request, type Response, type Router } from "express"
 import { User } from "@sve/db/types"
+import { SERVER_ENV } from "@sve/env";
 import { sendAuthCookies } from "../../utils/authTokens"
 import passport from "passport"
-require('dotenv').config({ path: "../../../.env" })
 
 const authRouter: Router = express.Router()
 
@@ -27,7 +27,7 @@ authRouter.get(
   // middleware for user add or create 
   function(req, res) { 
     sendAuthCookies(res, req.user as User);
-    res.redirect(`${process.env.CLIENT_URL}`);
+    res.redirect(`${SERVER_ENV.CLIENT_URL}`);
   } 
 );
 
@@ -125,7 +125,7 @@ authRouter.get(
 // authRouter.get("/loginMagicLink", async (req: Request, res: Response) => {
 //   const supabase = createServerClient({ req, res })
 //   const email = (req.query.email ?? "") as string
-//   const redirectUrl = process.env.API_URL ? `${process.env.API_URL}/auth/callback` : "localhost:5001/auth/callback"
+//   const redirectUrl = SERVER_ENV.API_URL ? `${SERVER_ENV.API_URL}/auth/callback` : "localhost:5001/auth/callback"
 
 //   if (!email) {
 //     return res.send({ error: "Email was not passed to request query" }).status(501)
@@ -188,7 +188,7 @@ authRouter.get(
 // authRouter.get("/confirm", async (req: Request, res: Response) => {
 //   const token_hash = req.query.token_hash as string
 //   const type = req.query.type as any
-//   const redirectUrl = process.env.HOST ? `${process.env.HOST}/` : "localhost:3000/"
+//   const redirectUrl = SERVER_ENV.HOST ? `${SERVER_ENV.HOST}/` : "localhost:3000/"
 
 //   if (!token_hash) {
 //     return res.send({ error: "Token hash not found in query params" }).status(500)

@@ -1,6 +1,7 @@
 import { Resend } from 'resend';
+import { SERVER_ENV } from '@sve/env';
 
-const resendKey = process.env.RESEND_API_KEY || ''
+const resendKey = SERVER_ENV.RESEND_API_KEY || ''
 const resend = new Resend(resendKey);
 
 export interface EmailArgs {

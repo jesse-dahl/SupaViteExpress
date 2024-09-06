@@ -19,7 +19,13 @@ const serverEnvSchema = z.object({
   GOOGLE_CLIENT_ID: z.string().min(1, 'GOOGLE_CLIENT_ID is required'),
   GOOGLE_CLIENT_SECRET: z.string().min(1, 'GOOGLE_CLIENT_SECRET is required'),
   RESEND_API_KEY: z.string().min(1, 'RESEND_API_KEY is required'),
+  AXIOM_TOKEN: z.string().optional(),
+  AXIOM_ORG_ID: z.string().optional(),
+  AXIOM_DATASET: z.string().optional(),
+  LOG_LEVEL: z.string().optional(),
   API_URL: z.string().min(1, 'API_URL is required'),
+  CLIENT_URL: z.string().min(1, 'CLIENT_URL is required'),
+  DOMAIN: z.string().optional(),
 });
 
 // Client-side environment schema

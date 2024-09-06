@@ -1,9 +1,9 @@
 import { Axiom } from '@axiomhq/js';
-require('dotenv').config({ path: "../../../.env" })
+import { SERVER_ENV } from "@sve/env";  
 
-if (!process.env.NEXT_PUBLIC_AXIOM_TOKEN) throw new Error('Axiom Token not found but required to log');
+if (!SERVER_ENV.AXIOM_TOKEN) throw new Error('Axiom Token not found but required to log');
 
 export const axiomClient = new Axiom({
-  token: process.env.NEXT_PUBLIC_AXIOM_TOKEN,
-  orgId: process.env.NEXT_PUBLIC_AXIOM_ORG_ID,
+  token: SERVER_ENV.AXIOM_TOKEN,
+  orgId: SERVER_ENV.AXIOM_ORG_ID,
 });

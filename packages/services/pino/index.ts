@@ -1,5 +1,5 @@
 import pino from "pino";
-require('dotenv').config({ path: "../../../.env" });
+import { SERVER_ENV } from "@sve/env";
 
 enum LogLevel {
   EVENT = 'EVENT',
