@@ -17,6 +17,9 @@ export default ({ mode } : { mode: any }) => {
     define: {
       'process.env': env,
     },
+    build: {
+      commonjsOptions: { transformMixedEsModules: true } // Change
+    }
   })
 }
 // https://vitejs.dev/config/

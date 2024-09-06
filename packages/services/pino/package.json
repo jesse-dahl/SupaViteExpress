@@ -1,0 +1,24 @@
+{
+  "name": "@sve/pino",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "pino": "^9.4.0",
+    "pino-pretty": "^11.2.2",
+    "@sve/eslint-config": "workspace:^",
+    "dotenv": "^16.4.5"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@sve/eslint-config/base"
+    ]
+  }
+}
