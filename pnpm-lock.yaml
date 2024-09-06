@@ -38,6 +38,9 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: ^0.5.12
         version: 0.5.14(prettier@3.3.0)
+      zod:
+        specifier: ^3.22.4
+        version: 3.23.8
     devDependencies:
       '@typescript-eslint/eslint-plugin':
         specifier: ^7.3.1
@@ -72,6 +75,9 @@ importers:
       '@sve/api':
         specifier: workspace:^1.0.0
         version: link:../packages/api
+      '@sve/env':
+        specifier: workspace:^
+        version: link:../packages/shared/env
       '@sve/eslint-config':
         specifier: workspace:^
         version: link:../packages/shared/config/eslint
@@ -392,6 +398,8 @@ importers:
       eslint-config-airbnb-base:
         specifier: ^15.0.0
         version: 15.0.0(eslint-plugin-import@2.29.1(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0))(eslint@8.57.0)
+
+  packages/shared/env: {}
 
   packages/shared/types:
     dependencies:

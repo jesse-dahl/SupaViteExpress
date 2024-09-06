@@ -16,6 +16,7 @@
     "@supabase/supabase-js": "^2.40.0",
     "@sve/api": "workspace:^1.0.0",
     "@sve/eslint-config": "workspace:^",
+    "@sve/env": "workspace:^",
     "@sve/supabase-client": "workspace:^",
     "@sve/types": "workspace:^",
     "@tailwindcss/forms": "^0.5.7",
