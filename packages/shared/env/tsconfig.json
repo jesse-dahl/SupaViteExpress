@@ -4,12 +4,16 @@
   "compilerOptions": {
     "composite": true,
     "outDir": "dist",
-    "module": "CommonJS",
+    "module": "ESNext",
     "moduleResolution": "node",
     "esModuleInterop": true,
     "noEmit": false,
   },
-  "include": ["*src/*.ts", "src/*.mjs"],
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node",
+  },
+  "include": ["*src/*.ts", "src/*.fmjs"],
   "exclude": [
     "./dist/**/*",
     "./node_modules/**/*",

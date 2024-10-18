@@ -12,7 +12,8 @@ const schema = {
 const connectionString = SERVER_ENV.DATABASE_URL!;
 
 if (!connectionString) {
-  throw new Error("Missing Drizzle connection string from .env")
+  console.warn("Missing Drizzle connection string from .env");
+  process.exit(1);
 }
 const client = postgres(connectionString);
 const db = drizzle(client, { schema });
