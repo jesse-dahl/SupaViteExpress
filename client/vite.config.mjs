@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react-swc'
 import path from 'path';
 import { CLIENT_ENV } from '@sve/env'
 
-export default ({ mode } : { mode: any }) => {
+export default ({ mode }) => {
   return defineConfig({
     preview: {
       port: 3001,
@@ -24,6 +24,9 @@ export default ({ mode } : { mode: any }) => {
     },
     build: {
       commonjsOptions: { transformMixedEsModules: true } // Change
+    },
+    ssr: {
+      noExternal: ['@sve/env', 'dotenv'],
     }
   })
 }

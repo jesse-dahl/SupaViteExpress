@@ -2,14 +2,16 @@
   "extends": "../../../tsconfig.json",
   "main": "./src/index.ts",
   "compilerOptions": {
+    "composite": true,
     "outDir": "dist",
     "module": "CommonJS",
     "moduleResolution": "node",
     "esModuleInterop": true,
     "noEmit": false,
   },
-  "include": ["index.ts", "/*.ts", "src/*.ts"],
-  "ts-node": {
-    "esm": false
-  }
+  "include": ["*src/*.ts", "src/*.mjs"],
+  "exclude": [
+    "./dist/**/*",
+    "./node_modules/**/*",
+  ]
 }

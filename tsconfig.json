@@ -24,7 +24,10 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": ["**/src", "prettier.config.cjs", "client/vite.config.ts"],
-  "exclude": ["node_modules"],
+  "exclude": [
+    "./dist/**/*",
+    "./node_modules/**/*",
+  ],
   "ts-node": {
     "compilerOptions": {
       "module": "commonjs"
@@ -33,6 +36,5 @@
   "references": [
     { "path": "./tsconfig.node.json" },
     { "path": "./packages/shared/env" },
-    { "path": "./packages/api" }
   ]
 }

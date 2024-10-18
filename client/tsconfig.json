@@ -1,8 +1,11 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
+    "composite": true,
     "outDir": "dist",
-    "module": "commonjs",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
     "noEmit": false,
     "paths": { "@api/*": ["../packages/api/src/*"], "@sve/env": ["../packages/shared/env/src"] }
   },
@@ -15,4 +18,8 @@
     "**/*.cjs",
     "**/*.mjs",
   ],
+  "exclude": [
+    "./dist/**/*",
+    "./node_modules/**/*",
+  ]
 }

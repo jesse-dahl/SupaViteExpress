@@ -52,16 +52,19 @@ class ConsoleLogger {
       const timestamp = new Date().toISOString();
       const ingestString = `[${timestamp}] [${level}] - ${message} ${data ? prettyPrint(data) : ''}`;
       console.log(ingestString);
-      if (!SERVER_ENV.AXIOM_DATASET) throw new Error('AXIOM_DATASET not defined within the env file...');
-      if (!axiomClient) throw new Error('Axiom client not instantiated');
-      axiomClient.ingest(SERVER_ENV.AXIOM_DATASET!, [{
-        message: ingestString,
-        platform: platform as object,
-        timestamp: `${timestamp}`,
-        data,
-        trace: trace || 'NA',
-        logLocation: file || 'NA',
-      }]);
+      
+      if (SERVER_ENV.AXIOM_DATASET && axiomClient) {
+        axiomClient.ingest(SERVER_ENV.AXIOM_DATASET, [{
+          message: ingestString,
+          platform: platform as object,
+          timestamp: `${timestamp}`,
+          data,
+          trace: trace || 'NA',
+          logLocation: file || 'NA',
+        }]);
+      } else {
+        console.warn('Skipping Axiom ingestion: AXIOM_DATASET not defined or axiomClient not instantiated');
+      }
     }
   }
 

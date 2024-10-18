@@ -10,7 +10,7 @@ import SignUpPage from './routes/SignUp';
 import Home from "./routes/Home";
 import AuthRoute from "./routes/AuthRoute";
 
-const router = createBrowserRouter([
+const router: any = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
