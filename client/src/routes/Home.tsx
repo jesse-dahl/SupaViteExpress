@@ -3,6 +3,8 @@ import reactLogo from '../assets/react.svg'
 import viteLogo from '/vite.svg'
 import { supabaseClient } from '@sve/supabase-client'
 
+console.log('process.env: ', process.env)
+
 const Home: React.FC = () => {
   const [count, setCount] = React.useState(0)
 

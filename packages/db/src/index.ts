@@ -1,7 +1,7 @@
 import { drizzle } from 'drizzle-orm/postgres-js'
 // import { migrate } from "drizzle-orm/postgres-js/migrator";
 import postgres from 'postgres'
-import * as users from "./schemas/users";
+import * as users from "../schemas/users";
 import { SERVER_ENV } from '@sve/env';
 // require('dotenv').config({ path: "../../.env" })
 
@@ -20,5 +20,5 @@ const db = drizzle(client, { schema });
 
 export * as userQueries from "./queries/users";
 export * as userMutations from "./mutations/users"
-export * from "./types"
+export * from "../types"
 export default db;

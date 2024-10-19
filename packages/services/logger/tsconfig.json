@@ -1,10 +1,8 @@
 {
   "extends": "../../../tsconfig.json",
-  "main": "./index.ts",
-  "compilerOptions": {
-    "outDir": "dist",
-    "module": "commonjs",
-    "noEmit": false,
-  },
-  "include": ["index.ts", "/*.ts", "./src/*.ts"],
+  "main": "./src/index.ts",
+  "include": ["*src/*.ts", "src/*.mjs", "src/*.ts"],
+  "exclude": [
+    "./dist/**/*",
+  ]
 }

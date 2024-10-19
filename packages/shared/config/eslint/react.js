@@ -16,9 +16,7 @@ const config = {
       version: "detect",
     },
   },
-  env: {
-    browser: true,
-  },
+  env: { browser: true, es2020: true, node: true },
 };
 
 module.exports = config;

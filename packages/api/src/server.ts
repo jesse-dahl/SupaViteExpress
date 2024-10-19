@@ -8,13 +8,14 @@ import cors from "cors"
 import userRouter from "./routes/user.router"
 import authRouter from "./routes/auth.router"
 import { User } from "@sve/db/types";
-import { getUser } from "@sve/db/queries/users";
-import { insertUser } from "@sve/db/mutations/users";
+import { userQueries } from "@sve/db";
+import { userMutations } from "@sve/db";
 import { logger } from "@sve/logger";
 
 
 const PORT = 5001;
 export const app: Express = express();
+let server: ReturnType<express.Application['listen']>;;
 
 export function initApp() {
   initAppMiddleware()
@@ -44,11 +45,11 @@ function initAuth() {
         // User find or create to db
         const userData = profile._json;
         // 2. db lookup
-        let user = await getUser(userData?.id)
+        let user = await userQueries.getUser(userData?.id)
 
         // 3. create user if not exists
         if (!user) {
-          [user] = await insertUser({
+          [user] = await userMutations.insertUser({
             googleId: userData?.id,
           })
         }
@@ -94,7 +95,14 @@ function initAppRouters() {
 }
 
 function startAppServer() {
-  app.listen(PORT, () => logger.debug(`Server listening on port : ${PORT}`));
+  server = app.listen(PORT, () => logger.debug(`Server listening on port : ${PORT}`));
 }
 
-
+process.on('SIGTERM', () => {
+  console.info('SIGTERM signal received.');
+  console.log('Closing http server.');
+  server.close(() => {
+    console.log('Http server closed.');
+    process.exit(0);
+  });
+});

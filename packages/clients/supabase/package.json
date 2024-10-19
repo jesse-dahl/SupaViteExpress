@@ -2,10 +2,25 @@
   "name": "@sve/supabase-client",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "exports": {
+    "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+    },
+    "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+    }
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build": "pnpm with-env pkgroll",
+    "build:dev": "pnpm with-env pkgroll --mode development",
+    "with-env": "dotenv -e ../../../.env --"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +32,7 @@
     "express": "^4.19.1"
   },
   "devDependencies": {
-    "@types/express": "^4.17.21"
+    "@types/express": "^4.17.21",
+    "pkgroll": "^2.5.0"
   }
 }

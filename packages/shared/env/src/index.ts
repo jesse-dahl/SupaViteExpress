@@ -1,8 +1,4 @@
-import dotenv from 'dotenv';
-import path from 'path';
 import { z } from 'zod';
-
-dotenv.config({ path: path.resolve(process.cwd(), '.env') });
 
 // Server-side environment schema
 const serverEnvSchema = z.object({
@@ -34,6 +30,8 @@ const clientEnvSchema = z.object({
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
   VITE_API_URL: z.string().min(1, 'VITE_API_URL is required'),
   VITE_CLIENT_URL: z.string().min(1, 'VITE_CLIENT_URL is required'),
+  SUPABASE_URL: z.string().min(1, 'SUPABASE_URL is required'),
+  SUPABASE_ANON_KEY: z.string().min(1, 'SUPABASE_ANON_KEY is required'),
 });
 
 // Parse and validate server environment

@@ -1,11 +1,32 @@
 {
   "name": "@sve/env",
   "version": "1.0.0",
-  "main": "./src/index.ts",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "exports": {
+    "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+    },
+    "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+    }
+  },
   "scripts": {
+    "build": "npx tsx ./src/config.ts && pkgroll",
+    "build:dev": "pnpm with-env npx tsx ./src/config.ts && pkgroll --mode development",
+    "with-env": "dotenv -e ../../../.env --"
   },
   "dependencies": {
-    "@sve/eslint-config": "workspace:^"
+    "@sve/eslint-config": "workspace:^",
+    "dotenv": "^16.4.5",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "pkgroll": "^2.5.0"
   },
   "eslintConfig": {
     "root": true,

@@ -1,13 +1,8 @@
 {
   "extends": "../../tsconfig.json",
-  "main": "./index.ts",
-  "compilerOptions": {
-    "outDir": "dist",
-    "module": "commonjs",
-    "noEmit": false,
-    "paths": {
-      "@sve/env": ["../shared/env/src"]
-    }
-  },
-  "include": ["."],
-  "exclude": ["node_modules"]}
+  "main": "./src/index.ts",
+  "include": ["*src/*.ts", "src/*.mjs", "src/*.ts"],
+  "exclude": [
+    "./dist/**/*",
+  ]
+}

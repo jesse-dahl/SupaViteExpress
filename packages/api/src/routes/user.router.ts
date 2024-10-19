@@ -2,7 +2,7 @@ import { User } from "@sve/db/types"
 import express, { NextFunction, type Request, type Response, type Router } from "express"
 import { authenticateJWT } from "../../middleware/auth"
 import { checkTokens } from "../../utils/authTokens"
-import { getUser } from "@sve/db/queries/users"
+import { userQueries } from "@sve/db"
 
 const userRouter: Router = express.Router()
 
@@ -23,7 +23,7 @@ userRouter.get("/users/:id", async (req: Request, _res: Response) => {
     if (maybeUser) {
       user = maybeUser;
     } else {
-      user = await getUser(userId);
+      user = await userQueries.getUser(userId);
     }
 
     return { user };

@@ -4,7 +4,6 @@ import {
 } from "react-router-dom";
 import './index.css'
 import router from "./BrowserRouter";
-
 export const App = () => {
 
   return (

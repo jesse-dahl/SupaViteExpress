@@ -2,9 +2,23 @@
   "name": "@sve/db",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "exports": {
+    "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+    },
+    "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+    }
+  },
   "scripts": {
-    "build": "tsc",
+    "build": "pkgroll",
+    "build:dev": "pkgroll --mode development",
     "lint": "eslint .",
     "dev": "pnpm with-env drizzle-kit studio --port 5558",
     "db:generate": "drizzle-kit generate:pg",
@@ -22,6 +36,7 @@
   "dependencies": {
     "@sve/eslint-config": "workspace:^",
     "@sve/env": "workspace:^",
+    "@sve/logger": "workspace:^",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.30.6",
     "pg": "^8.11.3",
@@ -32,7 +47,8 @@
     "drizzle-kit": "^0.20.14",
     "eslint": "^8.53.0",
     "prettier": "^3.1.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "pkgroll": "^2.5.0"
   },
   "eslintConfig": {
     "root": true,

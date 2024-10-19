@@ -1,6 +1,6 @@
 import * as jwt from "jsonwebtoken"
 import { User } from "@sve/db/types"
-import { getUser } from "@sve/db/queries/users"
+import { userQueries } from "@sve/db"
 import { Response } from "express";
 import { SERVER_ENV } from "@sve/env";  
 
@@ -91,7 +91,7 @@ export const checkTokens = async (
   }
 
   // 2. get user
-  const user = await getUser(data.userId) as User;
+  const user = await userQueries.getUser(data.userId) as User;
 
   // 3.check refresh token version
   if (!user || user.refreshTokenVersion !== data.refreshTokenVersion) {

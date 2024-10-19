@@ -1,21 +1,8 @@
 {
   "extends": "../../../tsconfig.json",
   "main": "./src/index.ts",
-  "compilerOptions": {
-    "composite": true,
-    "outDir": "dist",
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "noEmit": false,
-  },
-  "ts-node": {
-    "esm": true,
-    "experimentalSpecifierResolution": "node",
-  },
-  "include": ["*src/*.ts", "src/*.fmjs"],
+  "include": ["*src/*.ts", "src/*.mjs", "src/*.ts"],
   "exclude": [
     "./dist/**/*",
-    "./node_modules/**/*",
   ]
 }

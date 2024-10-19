@@ -2,10 +2,24 @@
   "name": "@sve/logger",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "exports": {
+    "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+    },
+    "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+    }
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build": "pkgroll",
+    "build:dev": "pkgroll --mode development"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +38,7 @@
     ]
   },
   "devDependencies": {
-    "@types/platform": "^1.3.6"
+    "@types/platform": "^1.3.6",
+    "pkgroll": "^2.5.0"
   }
 }

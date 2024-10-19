@@ -1,10 +1,15 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
+    "target": "es2017",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],    
     "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "esnext",
     "moduleResolution": "node",
+    "esModuleInterop": true,
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
@@ -16,7 +21,6 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
-    "esModuleInterop": true,
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
@@ -28,13 +32,7 @@
     "./dist/**/*",
     "./node_modules/**/*",
   ],
-  "ts-node": {
-    "compilerOptions": {
-      "module": "commonjs"
-    }
-  },
   "references": [
     { "path": "./tsconfig.node.json" },
-    { "path": "./packages/shared/env" },
   ]
 }

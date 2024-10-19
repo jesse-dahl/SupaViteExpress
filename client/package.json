@@ -4,10 +4,12 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build ",
+    "dev": "pnpm with-env vite",
+    "build": "pnpm with-env vite build",
+    "build:dev": "pnpm with-env vite build --mode development",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "with-env": "dotenv -e ../.env --"
   },
   "keywords": [],
   "author": "",
@@ -15,16 +17,18 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.40.0",
     "@sve/api": "workspace:^1.0.0",
+    "@sve/env": "workspace:^1.0.0",
     "@sve/eslint-config": "workspace:^",
-    "@sve/env": "workspace:^",
     "@sve/supabase-client": "workspace:^",
     "@sve/types": "workspace:^",
     "@tailwindcss/forms": "^0.5.7",
     "@tanstack/react-query": "^5.28.6",
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.6.8",
+    "dotenv": "^16.4.5",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",
+    "path-browserify": "^1.0.1",
     "react": "19.0.0-rc.0",
     "react-dom": "19.0.0-rc.0",
     "react-router-dom": "^6.22.3",
@@ -50,6 +54,10 @@
     "extends": [
       "@sve/eslint-config/base",
       "@sve/eslint-config/react"
-    ]
+    ],
+    "env": {
+      "browser": true,
+      "node": true
+    }
   }
 }

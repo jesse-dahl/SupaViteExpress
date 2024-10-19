@@ -2,15 +2,29 @@
   "name": "@sve/api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "type": "module",
+  "exports": {
+    "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+    },
+    "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+    }
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server:dev": "ts-node-dev --project tsconfig.json index.ts",
-    "server:build": "tsc --project tsconfig.json",
-    "start": "node index.ts",
-    "server": "nodemon index.ts",
-    "with-env": "dotenv -e ../../.env --",
-    "build": "tsc"
+    "server:dev": "tsx --project tsconfig.json ./src/index.ts",
+    "server:build": "tsx --project tsconfig.json",
+    "start": "node ./src/index.ts",
+    "server": "pnpm with-env tsx watch ./src/index.ts",
+    "build": "pkgroll",
+    "build:dev": "pkgroll --mode development",
+    "with-env": "dotenv -e ../../.env --"
   },
   "keywords": [],
   "author": "",
@@ -20,12 +34,13 @@
     "@sve/db": "workspace:^",
     "@sve/env": "workspace:^",
     "@sve/eslint-config": "workspace:^",
+    "@sve/logger": "workspace:^",
     "@sve/supabase-client": "workspace:^",
     "axios": "^1.6.8",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "express": "^4.19.1",
+    "express": "^4.21.1",
     "jsonwebtoken": "^9.0.2",
     "passport": "^0.7.0",
     "passport-google-oauth": "^2.0.0",
@@ -41,9 +56,7 @@
     "@types/passport-google-oauth": "^1.0.45",
     "concurrently": "^8.2.2",
     "eslint": "^8.45.0",
-    "nodemon": "^3.1.0",
-    "ts-node": "^10.9.2",
-    "ts-node-dev": "^2.0.0",
+    "pkgroll": "^2.5.0",
     "typescript": "^5.2.2"
   },
   "eslintConfig": {
